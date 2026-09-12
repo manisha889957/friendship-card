@@ -286,15 +286,32 @@ button {
 
 <script>
 
+<script>
+
+const scriptURL = "https://script.google.com/macros/s/AKfycbwDhlIj7NNcgQ5PqonY8u_HfKgFrkAlOdWxKDQxuzdm6IgpEX5IDcWYQeGWpOZO6q3gEw/exec";
+
+function sendResponse(response) {
+    fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({
+            response: response
+        })
+    });
+}
+
 function sayYes() {
+
+    sendResponse("Yes");
 
     document.getElementById("request").style.display = "none";
 
     document.getElementById("success").style.display = "block";
 }
 
-
 function sayNo() {
+
+    sendResponse("No");
 
     const button = document.querySelector(".no");
 
@@ -307,6 +324,8 @@ function sayNo() {
         (Math.random() * 60 - 30) +
         "px)";
 }
+
+</script>
 
 </script>
 
