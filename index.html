@@ -283,35 +283,22 @@ button {
 </div>
 
 
-
-
 <script>
+function sayYes() {
+    document.getElementById("request").style.display = "none";
+    document.getElementById("success").style.display = "block";
 
-const scriptURL = "https://script.google.com/macros/s/AKfycbwDhlIj7NNcgQ5PqonY8u_HfKgFrkAlOdWxKDQxuzdm6IgpEX5IDcWYQeGWpOZO6q3gEw/exec";
-
-function sendResponse(response) {
-    fetch(scriptURL, {
+    fetch("https://script.google.com/macros/s/AKfycbwDhlIj7NNcgQ5PqonY8u_HfKgFrkAlOdWxKDQxuzdm6IgpEX5IDcWYQeGWpOZO6q3gEw/exec", {
         method: "POST",
         mode: "no-cors",
-        body: JSON.stringify({
-            response: response
-        })
+        headers: {
+            "Content-Type": "text/plain"
+        },
+        body: "response=Yes"
     });
 }
 
-function sayYes() {
-
-    sendResponse("Yes");
-
-    document.getElementById("request").style.display = "none";
-
-    document.getElementById("success").style.display = "block";
-}
-
 function sayNo() {
-
-    sendResponse("No");
-
     const button = document.querySelector(".no");
 
     button.innerText = "Are you sure? 🥺";
@@ -322,6 +309,15 @@ function sayNo() {
         "px," +
         (Math.random() * 60 - 30) +
         "px)";
+
+    fetch("https://script.google.com/macros/s/AKfycbw8fI5bSWZnBKN-mS3AW1M95aykwpnFLLnCeo5d83GpwMuMWhkO47TSV0Fzs7aPe9lD/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "text/plain"
+        },
+        body: "response=No"
+    });
 }
 
 </script>
