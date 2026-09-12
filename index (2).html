@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Little Question 💌</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:ital,wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at 20% 20%, #f8d8df 0%, transparent 35%),
+        radial-gradient(circle at 80% 80%, #ead8e8 0%, transparent 35%),
+        #f7f1ed;
+
+    font-family: "DM Sans", sans-serif;
+    overflow: hidden;
+}
+
+/* Floating background hearts */
+
+.heart {
+    position: fixed;
+    color: rgba(173, 92, 111, 0.15);
+    font-size: 25px;
+    animation: float 8s infinite ease-in-out;
+}
+
+.heart:nth-child(1) {
+    left: 10%;
+    top: 20%;
+}
+
+.heart:nth-child(2) {
+    right: 12%;
+    top: 15%;
+    animation-delay: 2s;
+}
+
+.heart:nth-child(3) {
+    left: 20%;
+    bottom: 15%;
+    animation-delay: 4s;
+}
+
+.heart:nth-child(4) {
+    right: 20%;
+    bottom: 20%;
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-25px) rotate(10deg);
+    }
+}
+
+/* Main card */
+
+.card {
+    width: min(90%, 520px);
+    padding: 55px 45px;
+
+    background: rgba(255,255,255,0.72);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,0.8);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 25px 70px rgba(96, 62, 72, 0.16);
+
+    text-align: center;
+
+    animation: appear 1s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.small {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9b6675;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: #49343b;
+    margin: 0 0 20px;
+}
+
+.message {
+    color: #735e64;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 0 auto 32px;
+    max-width: 380px;
+}
+
+.divider {
+    width: 55px;
+    height: 1px;
+    background: #c89aa6;
+    margin: 25px auto;
+}
+
+.question {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    color: #543c44;
+    margin-bottom: 25px;
+}
+
+/* Buttons */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button {
+    border: none;
+    padding: 13px 28px;
+    border-radius: 50px;
+
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.yes {
+    background: #9b5367;
+    color: white;
+    box-shadow: 0 8px 20px rgba(155,83,103,0.25);
+}
+
+.yes:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(155,83,103,0.35);
+}
+
+.no {
+    background: #eee5e6;
+    color: #765f65;
+}
+
+.no:hover {
+    transform: translateY(-3px);
+}
+
+/* Success screen */
+
+.success {
+    display: none;
+}
+
+.success h1 {
+    font-size: 44px;
+}
+
+.signature {
+    margin-top: 30px;
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    color: #9b5367;
+    font-size: 18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="heart">♡</div>
+<div class="heart">♡</div>
+<div class="heart">♡</div>
+<div class="heart">♡</div>
+
+<div class="card">
+
+    <div id="request">
+
+        <div class="small">A little question</div>
+
+        <h1>
+            Some friendships<br>
+            feel like a little bit of magic.
+        </h1>
+
+        <div class="divider"></div>
+
+        <p class="message">
+            Somewhere between our conversations,
+            random jokes and shared moments,
+            I realised that I'd really like to
+            keep you in my life.
+        </p>
+
+        <div class="question">
+            So... will you be my friend? ♡
+        </div>
+
+        <div class="buttons">
+
+            <button class="yes" onclick="sayYes()">
+                Yes, absolutely ♡
+            </button>
+
+            <button class="no" onclick="sayNo()">
+                Maybe...
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div id="success" class="success">
+
+        <div class="small">It's official</div>
+
+        <h1>
+            I'm so glad<br>
+            you said yes. ♡
+        </h1>
+
+        <div class="divider"></div>
+
+        <p class="message">
+            Friendship successfully created.<br>
+            No bugs detected. 🐍
+        </p>
+
+        <div class="signature">
+            Here's to all the memories ahead.
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function sayYes() {
+
+    document.getElementById("request").style.display = "none";
+
+    document.getElementById("success").style.display = "block";
+}
+
+
+function sayNo() {
+
+    const button = document.querySelector(".no");
+
+    button.innerText = "Are you sure? 🥺";
+
+    button.style.transform =
+        "translate(" +
+        (Math.random() * 120 - 60) +
+        "px," +
+        (Math.random() * 60 - 30) +
+        "px)";
+}
+
+</script>
+
+</body>
+</html>
